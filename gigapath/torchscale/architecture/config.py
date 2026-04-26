@@ -1,6 +1,9 @@
 # Copyright (c) 2022 Microsoft
 # Licensed under The MIT License [see LICENSE for details]
 
+# After
+import numpy as np
+
 
 class EncoderConfig(object):
     def __init__(self, **kwargs):
@@ -68,7 +71,7 @@ class EncoderConfig(object):
 
     def postprocessing(self):
         if self.segment_length is not None and self.segment_length != '':
-            self.segment_length = eval(self.segment_length)
+            self.segment_length = eval(self.segment_length, {"np": np})
         if self.dilated_ratio is not None and self.dilated_ratio != '':
             self.dilated_ratio = eval(self.dilated_ratio)
 
